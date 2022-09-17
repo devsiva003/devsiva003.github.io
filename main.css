@@ -218,7 +218,7 @@ body {
 
 
 .langs-known .cover-img {
-    background-image: url(./images/4136918.jpg);
+    background-image: url(./images/skills-cover.jpg);
     border-radius: 50% 50% 47% 53% / 35% 40% 60% 50%;
 }
 
@@ -249,7 +249,7 @@ body {
 
 
 .career .cover-img {
-    background-image: url(./images/4026068.jpg);
+    background-image: url(./images/careers-cover.jpg);
     border-radius: 25% 15% 25% / 25% 20% 30%;
 }
 
@@ -525,6 +525,10 @@ body {
     margin-right: 0;
 }
 
+#footer {
+    overflow: hidden;
+}
+
 .footer-div {
     display: flex;
     justify-content: space-around;
@@ -595,30 +599,25 @@ body {
         flex-direction: column;
         background-color: #2e2e2e;
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        min-height: 100vh;
-        height: 100vh;
-        padding: 3rem 0 0 1rem;
+        top: 3.5rem;
+        right: 1rem;
+        padding: 1rem 2rem;
         column-gap: unset;
         row-gap: 1rem;
-        transform: translateX(-150vh);
         opacity: 0;
         pointer-events: none;
         overflow: scroll;
-        transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+        border-radius: 3px;
+        box-shadow: 0 8px 10px rgba(0, 0, 0, .15);
+        transition: opacity .3s linear;
+        z-index: 999;
     }
     .has-menu-opened #header .main-menu {
-        transform: translateX(0);
         opacity: 1;
         pointer-events: initial;
     }
     #header #main-menu-trigger {
         display: block;
-    }
-    .has-menu-opened {
-        overflow: hidden;
     }
 }
 
