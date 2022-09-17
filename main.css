@@ -726,13 +726,13 @@ body {
         border-radius: 3px;
         -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, .15);
                 box-shadow: 0 8px 10px rgba(0, 0, 0, .15);
+                z-index: 999;
+            }
+    .has-menu-opened #header .main-menu {
+        opacity: 1;
         -webkit-transition: opacity .3s linear;
         -o-transition: opacity .3s linear;
         transition: opacity .3s linear;
-        z-index: 999;
-    }
-    .has-menu-opened #header .main-menu {
-        opacity: 1;
         pointer-events: initial;
     }
     #header #main-menu-trigger {
