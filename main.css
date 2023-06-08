@@ -481,6 +481,7 @@ body {
     padding: 0 .5rem;
     border-radius: 3px;
     text-transform: uppercase;
+    white-space: pre;
 }
 
 #backToTopBtn {
