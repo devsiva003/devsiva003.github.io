@@ -1,6 +1,6 @@
 //
 const API_URL =
-    "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api/latest/currencies";
+    "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies";
 
 const amtA = document.getElementById("amtA");
 const amtB = document.getElementById("amtB");
@@ -84,11 +84,11 @@ const getCurrencyRate = async (curFrom, curTo) => {
         code: null,
     };
     try {
-        let res = await fetch(`${API_URL}/${curFrom}/${curTo}.min.json`);
+        let res = await fetch(`${API_URL}/${curFrom}.min.json`);
         if (!res.ok) return { ...result, code: res.status };
         res = await res.json();
         // console.log(res);
-        return { ok: true, res: res[curTo] };
+        return { ok: true, res: res[curFrom][curTo] };
     } catch (err) {
         return { ...result, res: err.message };
     }
