@@ -1,0 +1,9 @@
+{
+  "$schema": "./node_modules/knip/schema-jsonc.json",
+  "ignoreDependencies": ["sharp"], // sharp used by astro, need to be externally installed while using pnpm.
+  "ignoreExportsUsedInFile": {
+    "interface": true,
+    "type": true
+  },
+  "tags": ["-lintignore"]
+}

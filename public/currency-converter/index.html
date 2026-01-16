@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <base href="/currency-converter/" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Currency Converter</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined&display=swap"
+        />
+        <link rel="stylesheet" href="./main.css" />
+    </head>
+    <body>
+        <div class="container">
+            <h1>Currency Converter</h1>
+            <div class="input-wrap">
+                <i class="material-icons">payments</i>
+                <input
+                    type="number"
+                    id="amtA"
+                    min="0"
+                    placeholder="enter amount value"
+                />
+                <button class="btn" id="clrBtnA">
+                    <span class="material-icons">cancel</span>
+                </button>
+            </div>
+            <div class="inner-wrap">
+                <div class="select-wrap">
+                    <img id="flagImgA" />
+                    <select id="curA">
+                        <!-- <option value="usd">AFN</option> -->
+                        <!-- <option value="inr">INR</option> -->
+                    </select>
+                </div>
+                <button class="btn" id="swapBtn">
+                    <span class="material-icons">swap_horiz</span>
+                    <span>Swap</span>
+                </button>
+                <div class="select-wrap">
+                    <img id="flagImgB" />
+                    <select id="curB">
+                        <!-- <option value="inr">INR</option> -->
+                        <!-- <option value="usd">USD</option> -->
+                    </select>
+                </div>
+            </div>
+            <div class="input-wrap">
+                <i class="material-icons">payments</i>
+                <input
+                    type="number"
+                    id="amtB"
+                    min="0"
+                    placeholder="enter amount value"
+                />
+                <button class="btn" id="clrBtnB">
+                    <span class="material-icons">cancel</span>
+                </button>
+            </div>
+        </div>
+        <noscript>
+            <div class="no-js-modal">
+                <div class="modal-inner">
+                    <h3>Javascript need to be enabled</h3>
+                    <p>
+                        Please enable Javascript in your browser or use a
+                        browser that supports Javascript
+                    </p>
+                </div>
+            </div>
+        </noscript>
+        <script src="./countryData.js"></script>
+        <script src="./main.js"></script>
+    </body>
+</html>

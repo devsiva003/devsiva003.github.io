@@ -1,0 +1,38 @@
+---
+import SchemaOrg from '#/components/SchemaOrg.astro';
+import SectionDivider from '#/components/SectionDivider.astro';
+import { siteConfig } from '#/data/site-config';
+import Layout from '#/layouts/Layout.astro';
+
+import CareerAndPostsSection from './_home-sections/career-and-posts/CareerAndPostsSection.astro';
+import HeroSection from './_home-sections/hero/HeroSection.astro';
+import ProjectsSection from './_home-sections/projects/ProjectsSection.astro';
+import SkillsCertificationsSection from './_home-sections/skills-and-certifications/SkillsCertificationsSection.astro';
+
+const sections = [
+  HeroSection,
+  CareerAndPostsSection,
+  SkillsCertificationsSection,
+  ProjectsSection,
+] as const;
+---
+
+<Layout title={siteConfig.title} customSchema>
+  <SchemaOrg
+    slot="head"
+    type="person"
+    name={siteConfig.author.name}
+    jobTitle={siteConfig.author.jobTitle}
+    url={siteConfig.url}
+    sameAs={siteConfig.sameAs}
+  />
+  {sections.map(((Section,i)=>{
+    const isLast = i === sections.length - 1;
+    return (
+      <>
+        {<Section />}
+        {!isLast && <SectionDivider />}
+      </>
+    );
+  }))}
+</Layout>

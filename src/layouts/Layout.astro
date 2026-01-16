@@ -1,0 +1,78 @@
+---
+import Footer from '#/components/Footer.astro';
+import Particles from '#/components/Particles.astro';
+import SEOHead from '#/components/SEOHead.astro';
+import SchemaOrg from '#/components/SchemaOrg.astro';
+import Navigation from '#/components/nav/Navigation.astro';
+import { siteConfig } from '#/data/site-config';
+
+import '#/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  type?: 'website' | 'article' | 'profile';
+  publishedTime?: Date;
+  author?: string;
+  /** Pass custom schema to override default WebSite schema */
+  customSchema?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  image,
+  type = 'website',
+  publishedTime,
+  author,
+  customSchema = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="group/html">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      image={image}
+      type={type}
+      publishedTime={publishedTime}
+      author={author}
+    />
+    {!customSchema && (
+      <SchemaOrg
+        type="website"
+        name={siteConfig.name}
+        description={description}
+        url={Astro.site?.toString() || siteConfig.url}
+      />
+    )}
+    <slot name="head"/>
+    <script>
+      // Prevent flash of wrong theme
+      import { applyPreferedTheme } from '#/lib/theme';
+      applyPreferedTheme();
+    </script>
+    {import.meta.env.PROD && (
+      <script
+        is:inline
+        defer
+        src="https://cloud.umami.is/script.js"
+        data-website-id="bf3270a8-2342-4296-a279-730f37f141e6"
+        data-astro-rerun
+      ></script>
+    )}
+  </head>
+  <body class="min-h-screen">
+    <Particles/>
+    <Navigation/>
+
+    <main>
+      <slot/>
+    </main>
+
+    <Footer/>
+  </body>
+</html>
