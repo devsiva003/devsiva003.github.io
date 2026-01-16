@@ -23,30 +23,6 @@ export const isGroupedCertification = (cert: Certificate) => 'type' in cert;
 
 export const certifications: ReadonlyArray<Certificate> = [
   {
-    title: 'Database Management System (DBMS)',
-    issuer: 'NPTEL',
-    date: 'Dec 2024',
-    url: '/#nptel',
-  },
-  {
-    title: 'HackerRank Skill Certification (2+)',
-    issuer: 'HackerRank',
-    date: 'Jun 2023',
-    type: 'group',
-    items: [
-      {
-        title: 'Rest API (Intermediate)',
-        date: 'Jun 2023',
-        url: 'https://www.hackerrank.com/certificates/iframe/7a50fd705532',
-      },
-      {
-        title: 'React.js (Basic)',
-        date: 'May 2023',
-        url: 'https://www.hackerrank.com/certificates/iframe/4b49a173542d',
-      },
-    ],
-  },
-  {
     title: 'MongoDB Skill Badges (3+)',
     issuer: 'MongoDB',
     date: 'Dec 2025',
@@ -83,5 +59,29 @@ export const certifications: ReadonlyArray<Certificate> = [
         url: 'https://ti-user-certificates.s3.amazonaws.com/ae62dcd7-abdc-4e90-a570-83eccba49043/b5fd17d5-f9c9-4bb6-bcc5-bf914e36da91-sankara-subramanian-a-55a3dffa-4340-4855-a7c4-007ef3af21f9-certificate.pdf',
       },
     ],
+  },
+  {
+    title: 'HackerRank Skill Certification (2+)',
+    issuer: 'HackerRank',
+    date: 'Jun 2023',
+    type: 'group',
+    items: [
+      {
+        title: 'Rest API (Intermediate)',
+        date: 'Jun 2023',
+        url: 'https://www.hackerrank.com/certificates/iframe/7a50fd705532',
+      },
+      {
+        title: 'React.js (Basic)',
+        date: 'May 2023',
+        url: 'https://www.hackerrank.com/certificates/iframe/4b49a173542d',
+      },
+    ],
+  },
+  {
+    title: 'Database Management System (DBMS)',
+    issuer: 'NPTEL',
+    date: 'Oct 2022',
+    url: 'https://drive.google.com/file/d/1JIoVbXmL3thx99wkKAk-l7xTMAFP_lL3/preview',
   },
 ];
