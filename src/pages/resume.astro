@@ -1,0 +1,98 @@
+---
+import { ArrowLeft, Download, LoaderPinwheel } from 'lucide-astro';
+
+import Layout from '#/layouts/Layout.astro';
+
+const resumeUrl =
+  'https://drive.google.com/file/d/1QZ4nkkmzXKuIk9uqqwK1dMYi_x6JDwAi/preview';
+const resumeDownloadName = 'Your_Name_Resume.pdf';
+---
+
+<Layout
+  title="Resume | Portfolio"
+  description="View and download my professional resume."
+>
+  <section class="py-16 pt-28 min-h-screen">
+    <div class="max-w-7xl mx-auto px-6 md:px-8">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <a
+            href="/"
+            class="inline-flex items-center gap-2 font-mono text-sm uppercase tracking-widest mb-4 text-text-muted hover:text-text transition-colors"
+          >
+            <ArrowLeft class="w-4 h-4"/>
+            Back to Home
+          </a>
+          <h1 class="text-4xl md:text-6xl uppercase">Resume</h1>
+        </div>
+      </div>
+
+      <div class="relative max-w-(--resume-width) mx-auto">
+        <div
+          class="w-full bg-bg-alt border-2 border-border rounded-xl overflow-hidden shadow-[8px_8px_0_var(--color-border)]"
+        >
+          <iframe
+            id="resumeEmbedFrame"
+            src={resumeUrl}
+            loading="lazy"
+            title="Resume"
+            data-state="loading"
+            class="w-full h-(--resume-height) border-0 data-[state=loading]:opacity-0 data-[state=loading]:pointer-events-none transition-opacity peer"
+          ></iframe>
+          <div
+            class="absolute inset-0 flex flex-col items-center justify-center gap-4 from-bg-alt from-0% via-bg via-50% to-bg-alt to-100% bg-linear-135 bg-size-[200%_200%] animate-pulse ease-in-out [animation-duration:2s] rounded-lg peer-data-[state=loaded]:hidden"
+          >
+            <LoaderPinwheel
+              class="size-10 animate-spin [animate_duration:0.8s]"
+            />
+            <span class="text-sm text-text-muted font-mono"> Loading... </span>
+          </div>
+        </div>
+        <!-- pop-out block -->
+        <div class="absolute top-0 right-0 size-20 select-none"></div>
+        <a
+          href={resumeUrl}
+          download={resumeDownloadName}
+          class="absolute top-3 right-3 md:right-3 lg:right-3 z-40 inline-flex items-center gap-2 px-4 py-3 bg-primary text-bg font-mono text-sm uppercase tracking-wide rounded-xl border-2 border-primary shadow-[4px_4px_0_var(--color-border)] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_var(--color-border)] transition-all"
+        >
+          <Download class="size-4"/>
+          <span class="hidden sm:inline">Download</span>
+        </a>
+
+        <!-- Fallback for browsers that don't support PDF embed -->
+        <noscript>
+          <div class="p-8 text-center">
+            <p class="text-text-muted mb-4">Unable to display PDF.</p>
+            <a
+              href={resumeUrl}
+              download={resumeDownloadName}
+              class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bg font-mono uppercase tracking-wide rounded-xl"
+            >
+              <Download class="w-4 h-4"/>
+              Download Resume
+            </a>
+          </div>
+        </noscript>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  :root {
+    --resume-width: 920px;
+    --resume-height: 1200px;
+  }
+</style>
+
+<script>
+  bindFrameLoad();
+
+  function bindFrameLoad() {
+    const resumeEmbedFrame = document.getElementById('resumeEmbedFrame');
+    resumeEmbedFrame?.addEventListener('load', () => {
+      if (resumeEmbedFrame.dataset.state !== 'loaded')
+        resumeEmbedFrame.dataset.state = 'loaded';
+    });
+  }
+</script>
