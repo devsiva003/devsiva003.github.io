@@ -10,5 +10,5 @@ export const profile = {
 
 export const socials = [
   { platform: 'github', url: 'https://github.com/devsiva003' },
-  { platform: 'linkedin', url: 'https://linkedin.com/devsiva003' },
+  { platform: 'linkedin', url: 'https://linkedin.com/in/devsiva003' },
 ] as const;
