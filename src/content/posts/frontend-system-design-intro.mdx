@@ -1,0 +1,133 @@
+---
+title: "Frontend System Design: Thinking Beyond Components and Frameworks"
+date: 2026-04-23
+slug: frontend-system-design-intro
+tags: ["frontend", "system-design"]
+draft: false
+---
+
+You start with a **simple idea**.
+
+A page. A couple of components. One API call.
+
+State lives where it's used. Data flows are obvious. You ship quickly and it works.
+
+Then the product grows.
+
+A new feature needs the same data somewhere else. So you lift the state. Another feature adds more conditions. Now multiple components depend on it.
+
+Soon, you're passing data through layers that don't really care about it.
+Fixing one bug breaks something unrelated.
+Performance starts to dip, but it's not clear why.
+
+Nothing is obviously wrong. But everything feels **fragile**.
+
+The code didn't suddenly get worse.
+The system just couldn't handle what you asked of it. So..,
+
+## What Is Frontend System Design?
+
+Frontend system design is the process of structuring your frontend so it remains:
+
+- **Scalable**: can handle growth in features and teams
+- **Performant**: feels fast under real-world conditions
+- **Maintainable**: easy to change without breaking everything
+- **Predictable**: behavior is understandable, not surprising
+
+It's **not about** picking the “best” framework. It's **about** making intentional architectural decisions.
+
+## The Shift: From Components -> Systems
+
+Most frontend discussions focus on:
+
+- Which **framework** should I use?
+- Which **state library** is better?
+- How do I build this **component**?
+
+Those are useful, but they're not system design.
+
+System design asks different questions:
+
+- Where does **data live**, and why?
+- How does **data flow** through the app?
+- What happens when this **scales** 10x?
+- What are the **trade-offs** of this decision?
+
+A well-built component can still live inside a poorly designed system.
+
+Good frontend systems aren't just **well-built**. they're **well-organized**.
+
+## The Core Pillars Of Frontend System Design
+
+Every frontend system is shaped by a few key decisions.
+
+This series will break them down in depth, but at a high level:
+
+- **Rendering Strategy** - How your UI reaches the user (CSR, SSR, SSG, and modern hybrids)
+- **Architecture** - How your code is organized (components, design systems, folder structure)
+- **State & Data Flow** - How data moves through your app (local vs global, server vs client)
+- **Data Fetching & Caching** - How you talk to APIs and manage freshness
+- **Performance** - How fast your app feels—not just in theory, but in practice
+- **Robustness** - How your app handles: security, accessibility & long-term maintenance
+
+None of these exist in isolation.
+Every decision affects the others.
+
+***There is no “best” solution—only trade-offs***
+
+This is the part most tutorials skip.
+Every architectural decision comes with trade-offs:
+
+- Server-side rendering improves initial load, but adds complexity
+- Global state simplifies access, but increases coupling
+- Reusable components reduce duplication, but can become over-abstracted
+
+System design is about understanding: What you **gain** vs what you **give up**
+And choosing based on your context, not trends.
+
+## A Quick Example: Designing A Simple Dashboard
+
+Let's say you're building a dashboard. At first, it seems straightforward:
+
+- Fetch data
+- Render charts
+- Add some filters
+
+But design decisions start appearing quickly:
+
+- Do you fetch data on the client or server?
+- Where does filter state live?
+- Do multiple components share the same data?
+- How do you avoid refetching everything on every interaction?
+
+Now imagine:
+
+- 10x more data
+- Real-time updates
+- Multiple teams working on it
+
+**Without** a system-level approach, complexity explodes, **with** the right structure, it stays manageable.
+
+## Why This Matters More Than Ever
+
+**Modern frontend** is no longer “**just UI**.” We now deal with:
+
+- Distributed systems (APIs, edge, caching layers)
+- Complex state synchronization
+- Performance constraints across devices and networks
+- Large teams collaborating on shared codebases
+
+The frontend is a system. treating it like one is no longer optional.
+
+## A Better Way To Approach Frontend Design
+
+Instead of jumping straight into tools, we need a structured way to think about decisions. That's where a framework helps.
+
+In the next post, we'll break down a practical approach to frontend system design: The **RADIO** Framework - a way to move from vague ideas to clear architectural decisions.
+
+## Final Takeaway
+
+Most frontend codebases don't collapse because of bad code. They collapse because no one designed how the pieces should work together.
+
+Great frontend engineering **isn't about writing** components faster.
+It's **about designing** systems that don't fall apart as they grow.
