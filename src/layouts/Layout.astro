@@ -46,7 +46,7 @@ const {
         type="website"
         name={siteConfig.name}
         description={description}
-        url={Astro.site?.toString() || siteConfig.url}
+        url={import.meta.env.SITE || siteConfig.url}
       />
     )}
     <slot name="head"/>

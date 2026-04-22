@@ -21,7 +21,7 @@ const {
   canonicalUrl,
 } = Astro.props;
 
-const siteUrl = Astro.site?.toString() || siteConfig.url;
+const siteUrl = import.meta.env.SITE || siteConfig.url;
 const currentUrl =
   canonicalUrl ||
   new URL(Astro.url.pathname, siteUrl).toString().replace(/\/$/, '');
@@ -35,6 +35,7 @@ const imageUrl = image.startsWith('http')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="title" content={title}>
 <meta name="description" content={description}>
+<meta name="author" content={author}>
 <meta name="robots" content="index, follow">
 <meta name="generator" content={Astro.generator}>
 
@@ -47,6 +48,8 @@ const imageUrl = image.startsWith('http')
 <meta property="og:title" content={title}>
 <meta property="og:description" content={description}>
 <meta property="og:image" content={imageUrl}>
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content={siteConfig.name}>
 <meta property="og:locale" content="en_US">
 

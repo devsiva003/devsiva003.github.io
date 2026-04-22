@@ -8,6 +8,8 @@
 @import "@fontsource/space-mono/700.css";
 @import "@fontsource-variable/catamaran";
 
+@plugin "@tailwindcss/typography";
+
 @custom-variant dark (&:where(:root.dark, :root.dark *));
 
 @theme {

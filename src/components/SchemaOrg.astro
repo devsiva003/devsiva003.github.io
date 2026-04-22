@@ -1,4 +1,6 @@
 ---
+import { siteConfig } from '#/data/site-config';
+
 interface PersonSchema {
   type: 'person';
   name: string;
@@ -28,7 +30,7 @@ interface ArticleSchema {
 type Props = PersonSchema | WebSiteSchema | ArticleSchema;
 
 const props = Astro.props;
-const siteUrl = Astro.site?.toString() || 'https://example.com';
+const siteUrl = import.meta.env.SITE || 'https://example.com';
 
 function generateSchema(props: Props) {
   switch (props.type) {
@@ -49,24 +51,58 @@ function generateSchema(props: Props) {
         description: props.description,
         url: props.url,
       };
-    case 'article':
+    case 'article': {
+      const authorId = `${siteUrl}/#author`;
+      const publisherId = `${siteUrl}/#organization`;
+      const imageUrl = props.image?.startsWith('http')
+        ? props.image
+        : `${siteUrl}${props.image}`;
+
       return {
         '@context': 'https://schema.org',
-        '@type': 'Article',
-        headline: props.headline,
-        description: props.description,
-        datePublished: props.datePublished.toISOString(),
-        dateModified: (props.dateModified || props.datePublished).toISOString(),
-        author: {
-          '@type': 'Person',
-          name: props.author,
-        },
-        mainEntityOfPage: {
-          '@type': 'WebPage',
-          '@id': props.url,
-        },
-        image: props.image,
+        '@graph': [
+          {
+            '@type': 'Person',
+            '@id': authorId,
+            name: props.author,
+            url: siteUrl,
+            sameAs: siteConfig.sameAs || [],
+          },
+          {
+            '@type': 'Organization',
+            '@id': publisherId,
+            name: siteConfig.name,
+            url: siteUrl,
+            logo: {
+              '@type': 'ImageObject',
+              url: `${siteUrl}/favicon.svg`,
+            },
+          },
+          {
+            '@type': 'BlogPosting',
+            '@id': `${props.url}#article`,
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': props.url,
+            },
+            headline: props.headline,
+            description: props.description,
+            datePublished: props.datePublished.toISOString(),
+            dateModified: (
+              props.dateModified || props.datePublished
+            ).toISOString(),
+            author: { '@id': authorId },
+            publisher: { '@id': publisherId },
+            image: props.image
+              ? {
+                  '@type': 'ImageObject',
+                  url: imageUrl,
+                }
+              : undefined,
+          },
+        ],
       };
+    }
   }
 }
 

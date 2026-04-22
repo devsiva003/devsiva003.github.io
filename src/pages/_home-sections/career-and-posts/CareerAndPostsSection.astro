@@ -66,7 +66,7 @@ const recentPosts = (await getCollection('posts', ({ data }) => !data.draft))
         <div class="flex flex-col divide-y divide-border">
           {recentPosts.length > 0 ? (
             recentPosts.map((post) => (
-              <a href={`/posts/${post.slug}`} class="group py-6 first:pt-0 last:pb-0 flex flex-col gap-2 hover:bg-bg-alt/50 -mx-4 px-4 rounded-lg transition-colors">
+              <a href={`/posts/${post.id}`} class="group py-6 first:pt-0 last:pb-0 flex flex-col gap-2 hover:bg-bg-alt/50 -mx-4 px-4 rounded-lg transition-colors">
                 <time class="font-mono text-xs text-text-muted uppercase">
                   {post.data.date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                 </time>
